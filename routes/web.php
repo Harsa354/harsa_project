@@ -6,7 +6,9 @@ use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\JenisController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\StokController;
+use App\Http\Controllers\TitipanController;
 use App\Http\Controllers\TransaksiController;
+
 use App\Models\Transaksi;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +32,8 @@ Route::resource('/kategori', KategoriController::class);
 Route::resource('/jenis', JenisController::class);
 Route::resource('/menu', MenuController::class);
 Route::resource('/stok', StokController::class);
+Route::resource('/titipan', TitipanController::class);
+
 
 // Transaction
 Route::resource('/pemesanan', PemesananController::class);

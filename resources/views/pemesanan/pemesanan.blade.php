@@ -1,5 +1,5 @@
 <div class="item content">
-    <h3>order</h3>
+    <h3>Order Pemesanan</h3>
     <ul class="ordered-list">
 
     </ul>
