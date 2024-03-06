@@ -27,15 +27,18 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [HomeController::class, 'about']);
 Route::get('/isi', [HomeController::class, 'where']);
 
-// CRUD
+// CRUD --------------------------------------------------------------
 Route::resource('/kategori', KategoriController::class);
 Route::resource('/jenis', JenisController::class);
 Route::resource('/menu', MenuController::class);
 Route::resource('/stok', StokController::class);
+// Titipan
 Route::resource('/titipan', TitipanController::class);
+Route::get('/titipan/export/excel', [TitipanController::class, 'export']);
+Route::post('/titipan/import', [TitipanController::class, 'import'])->name('import_titipan');
 
 
-// Transaction
+// Transaction -------------------------------------------------------
 Route::resource('/pemesanan', PemesananController::class);
 Route::resource('/transaksi', TransaksiController::class);
 Route::get('nota/{nofaktur}', [TransaksiController::class, 'faktur']);

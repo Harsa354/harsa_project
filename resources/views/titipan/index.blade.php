@@ -11,9 +11,34 @@
               <h6 class="text-white text-capitalize ps-3">Tabel Titipan</h6>
             </div>
           </div>
-          <div class="card-body px-0 pb-2">
+          <div class="card-body px-2 pb-2">
+
+            @if (session('success'))
+            <div class="mt-2 alert alert-success alert-dismissible fade show mx-3 text-white" role="alert">
+              <strong>Selamat!</strong> {{ session('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
+
+          @if ($errors->any())
+            <div class="mt-2 alert alert-danger alert-dismissible fade show mx-3 text-white" role="alert">
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <ul>
+                @foreach ($errors->all() as $error)
+                    <li>Data {{ $error }} categori belum di isi</li>
+                @endforeach
+              </ul>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>  
+          @endif
             <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-mode="tambah" data-bs-target="#modalFormTitipan">
               Tambah  
+            </button>
+            <a href="/titipan/export/excel" class="btn btn-success mx-3">
+              Export  
+            </a>
+            <button type="button" class="btn btn-warning mx-3" data-bs-toggle="modal" data-bs-target="#import">
+              Import  
             </button>
             <div class="table-responsive p-0">
               
@@ -23,6 +48,29 @@
         </div>
       </div>
       @include('footer')
+    </div>
+    {{-- Modal Import --}}
+    <div class="modal fade" id="import" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header d-flex align-items-center mr-3 py-3">
+              <h3 class="modal-title" id="staticBackdropLabel">Import Data</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="{{ route('import_titipan') }}" method="POST" class="form" enctype="multipart/form-data">
+              {{ csrf_field() }}
+              <div class="modal-body">
+                  <div class="form-group">
+                    <input type="file" name="file" required>
+                  </div>
+              </div>
+              <div class="modal-footer pt-3 pb-0">
+                <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Keluar</button>
+                <button type="submit" class="btn btn-primary" id="simpan">Simpan Perubahan</button>
+              </div>
+            </div>
+          </form>
+      </div>
     </div>
 </div>
     

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ProdukTitipanExport;
 use App\Http\Requests\StoreTitipanRequest;
 use App\Http\Requests\UpdateTitipanRequest;
+use App\Imports\ProdukTitipanImport;
 use App\Models\Titipan;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class TitipanController extends Controller
@@ -70,5 +73,20 @@ class TitipanController extends Controller
     {
         $titipan->delete();
         return redirect('titipan');
+    }
+
+
+    public function export() 
+    {
+        return Excel::download(new ProdukTitipanExport, 'titipan.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        $namafile = $file->getClientOriginalName();
+        $file->move('DataTitipan', $namafile);
+        Excel::import(new ProdukTitipanImport, public_path('/DataTitipan/'.$namafile));
+        return redirect()->back()->with('success', 'Import data berhasil');
     }
 }
