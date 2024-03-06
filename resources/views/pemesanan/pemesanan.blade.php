@@ -1,11 +1,15 @@
 <div class="item content">
     <h3>Order Pemesanan</h3>
-    <ul class="ordered-list">
+    <div class="ordered-list">
+        
+    </div>
+    {{-- <ul class="ordered-list">
 
-    </ul>
+    </ul> --}}
     Total Bayar : <h2 id="total">0</h2>
-    <div>
-        <button id="btn-bayar" class="button primary">Bayar</button>
+    <div class="row px-2">
+        <button id="btn-bayar" class="col btn btn-primary">Bayar</button>
     </div>
 </div>
-<div class="item footer">footer</div>
+{{-- <div class="item footer">footer</div> --}}
+

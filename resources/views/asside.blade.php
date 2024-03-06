@@ -87,7 +87,6 @@
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
             <span class="nav-link-text ms-1">Titipan Produk
-
             </span>
           </a>
         </li>

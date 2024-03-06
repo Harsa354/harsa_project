@@ -38,15 +38,15 @@
 
         const changeQty = (el,inc) => {
             //ubah di array
-            const id = $(el).closest('li')[0].dataset.id;
+            const id = $(el).closest('.li')[0].dataset.id;
             const index = orderedList.findIndex(list => list.id == id)
             console.log(orderedList)
             console.log(index)
             orderedList[index].qty += orderedList[index].qty == 1 && inc == -1 ? 0 : inc 
 
             //ubah qty dan ubah subtotal
-            const txt_subtotal = $(el).closest('li').find('.subtotal')[0];
-            const txt_qty = $(el).closest('li').find('.qty-item')[0];
+            const txt_subtotal = $(el).closest('.li').find('.subtotal')[0];
+            const txt_qty = $(el).closest('.li').find('.qty-item')[0];
             txt_qty.value = parseInt(txt_qty.value) == 1 && inc == -1 ? 1 : parseInt(txt_qty.value) + inc
             txt_subtotal.innerHTML = orderedList[index].harga * orderedList[index].qty;
 
@@ -62,7 +62,7 @@
         })
 
         $('.ordered-list').on('click','.remove-item',function(){
-            const item = $(this).closest('li')[0];
+            const item = $(this).closest('.li')[0];
             let index = orderedList.findIndex(list => list.id = parseInt(item.dataset.id))
             orderedList.splice(index,1)
             $(item).remove();
@@ -99,22 +99,24 @@
             if(orderedList.every(list => list.id !== id)){
                 let dataN = {'id':id,'menu':nama_menu,'harga':harga, 'qty': 1}
                 // console.log(orderedList)
-                let listOrder = `<li data-id="${id}"><h3>${nama_menu}</h3>`
-                    listOrder += `<button class="remove-item">hapus</button>
-                                <button class="btn-dec">-</button>`
-                listOrder += `<input class="qty-item"
-                            type="number"
-                            value="1"
-                            style="width:40px"
-                            readonly
-                            />
-                            <button class="btn-inc">+</button><h2>
-                                <span class="subtotal">${harga *1}</span>
-                            </li>`
+                let listOrder = `<div class="card p-3 pb-0 rounded mb-3 li" data-id="${id}" style="border-left: 10px solid #d51c1c;">
+                                    <div class="d-flex justify-content-between">
+                                        <h4>${nama_menu}</h4>
+                                        <input class="qty-item" type="number" value="1" style="width:40px;height: 25px;border: none; outline: none;" readonly/>
+                                        <div class="d-flex">
+                                            <button class="btn btn-light btn-rounded btn-icon-only text-lg p-0 btn-dec" style="width: 25px; height: 25px;">-</button>
+                                            <button class="btn btn-warning btn-rounded btn-icon-only text-lg p-0 ms-2 btn-inc" style="width: 25px; height: 25px;">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <p>Rp. <span class="subtotal">${harga *1}</span></p>
+                                        <button class="btn btn-primary btn-rounded text-lg ps-3 py-1 ms-2 remove-item"><i class="material-icons text-white">delete</i> hapus</button>
+                                    </div>
+                                </div>`;
                 orderedList.push(dataN);
                 $('.ordered-list').append(listOrder)
             }
-            // $('#total').html(sum())
+            $('#total').html(sum())
             console.log ('hii')
             
 })
