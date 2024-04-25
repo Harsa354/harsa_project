@@ -8,14 +8,14 @@
         <div class="card my-4">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">Tabel Kategori</h6>
+              <h6 class="text-white text-capitalize ps-3">Tabel Meja</h6>
             </div>
           </div>
           <div class="card-body px-0 pb-2">
             <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Tambah  
             </button>
-            <a href="/kategori/export/excel" class="btn btn-success mx-3">
+            <a href="/meja/export/excel" class="btn btn-success mx-3">
               Export  
             </a>
             <button type="button" class="btn btn-warning mx-3" data-bs-toggle="modal" data-bs-target="#import">
@@ -23,7 +23,7 @@
             </button>
             <div class="table-responsive p-0">
               
-              @include('kategori.data')
+              @include('meja.data')
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@
 </div>
     
     
-@include('kategori.form')
+@include('meja.form')
 @endsection
 
 
@@ -67,22 +67,28 @@
         console.log('bro')
         let button = $(e.relatedTarget);
         let id = button.data('id');
-        let nama = button.data('nama');
+        let nomorMeja = button.data('nomor_meja');
+        let kapasitas = button.data('kapasitas');
+        let status = button.data('status');
         let mode = button.data('mode');
         console.log(button.data('mode'));
         // let mode = button.data('mode');
         let modal = $(this);
         if(mode === 'edit'){
           modal.find('.modal-title').text('Edit Data');
-          modal.find('#nama').val(nama);
-          let halo = modal.find('.form').attr('action', '{{ url("kategori") }}/'+id);
+          modal.find('#nomor_meja').val(nomorMeja);
+          modal.find('#kapasitas').val(kapasitas);
+          modal.find('#status').val(status);
+          let halo = modal.find('.form').attr('action', '{{ url("meja") }}/'+id);
           modal.find('#simpan').text('Simpan Perubahan');
           modal.find('#method').html('@method("PATCH")');
           // console.log(btn);
         }else{
           modal.find('.modal-title').text('Tambah Data');
-          modal.find('#nama').val('');
-          modal.find('.form').attr('action', 'kategori');
+          modal.find('#nomor_meja').val('');
+          modal.find('#kapasitas').val('');
+          modal.find('#status').val('');
+          modal.find('.form').attr('action', 'meja');
           modal.find('#simpan').text('Simpan');
           modal.find('#method').html('');
         }

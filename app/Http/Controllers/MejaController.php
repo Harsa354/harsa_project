@@ -13,7 +13,11 @@ class MejaController extends Controller
      */
     public function index()
     {
-        //
+        $meja = Meja::latest()->get();
+        $i = 0;
+        return view('meja.index', compact('meja'), [
+            'no' => $i
+        ]);
     }
 
     /**
@@ -29,7 +33,10 @@ class MejaController extends Controller
      */
     public function store(StoreMejaRequest $request)
     {
-        //
+        // dd($request);
+        Meja::create($request->all());
+
+        return redirect('meja');
     }
 
     /**
@@ -53,7 +60,8 @@ class MejaController extends Controller
      */
     public function update(UpdateMejaRequest $request, Meja $meja)
     {
-        //
+        $meja->update($request->all());
+        return redirect('meja');
     }
 
     /**
@@ -61,6 +69,8 @@ class MejaController extends Controller
      */
     public function destroy(Meja $meja)
     {
-        //
+        $meja->delete();
+        return redirect('meja');
     }
-}
+    }
+

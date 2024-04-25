@@ -55,7 +55,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="kategori">
+          <a class="nav-link text-white active bg-gradient-primary" href="pelanggan">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">person</i>
             </div>
@@ -64,7 +64,7 @@
           </a>
         </li> 
          <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="kategori">
+          <a class="nav-link text-white active bg-gradient-primary" href="meja">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_restaurant</i>
             </div>
@@ -84,7 +84,7 @@
         <li class="nav-item">
           <a class="nav-link text-white active bg-gradient-primary" href="titipan">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">receipt_long</i>
+              <i class="material-icons opacity-10">timer</i>
             </div>
             <span class="nav-link-text ms-1">Titipan Produk
             </span>

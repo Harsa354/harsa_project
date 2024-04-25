@@ -13,7 +13,11 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggan = Pelanggan::latest()->get();
+        $i = 0;
+        return view('pelanggan.index', compact('pelanggan'), [
+            'no' => $i
+        ]);
     }
 
     /**
@@ -29,7 +33,8 @@ class PelangganController extends Controller
      */
     public function store(StorePelangganRequest $request)
     {
-        //
+        Pelanggan::create($request->all());
+        return redirect('pelanggan');
     }
 
     /**
