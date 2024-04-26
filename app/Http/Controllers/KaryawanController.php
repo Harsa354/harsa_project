@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\karyawan;
 use App\Http\Requests\StorekaryawanRequest;
 use App\Http\Requests\UpdatekaryawanRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KaryawanController extends Controller
 {

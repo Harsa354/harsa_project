@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Jenis;
 
 class MenuController extends Controller

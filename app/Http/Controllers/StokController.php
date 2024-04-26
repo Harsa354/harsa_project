@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Stok;
 use App\Http\Requests\StoreStokRequest;
 use App\Http\Requests\UpdateStokRequest;
+use Maatwebsite\Excel\Facades\Excel;
+
 use App\Models\Menu;
 
 class StokController extends Controller

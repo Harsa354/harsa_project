@@ -6,6 +6,7 @@ use App\Models\Jenis;
 use App\Http\Requests\StoreJenisRequest;
 use App\Http\Requests\UpdateJenisRequest;
 use App\Models\Kategori;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JenisController extends Controller
 {

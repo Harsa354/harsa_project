@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\KategoriExport;
 use App\Models\Kategori;
 use App\Http\Requests\StoreKategoriRequest;
 use App\Http\Requests\UpdateKategoriRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class KategoriController extends Controller
 {
@@ -71,5 +73,10 @@ class KategoriController extends Controller
     {
         $kategori->delete();
         return redirect('kategori');
+    }
+
+    public function export()
+    {
+        return Excel::download(new KategoriExport, 'kategori.xlsx');
     }
 }

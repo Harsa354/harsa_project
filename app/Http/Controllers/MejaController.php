@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Meja;
 use App\Http\Requests\StoreMejaRequest;
 use App\Http\Requests\UpdateMejaRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MejaController extends Controller
 {
