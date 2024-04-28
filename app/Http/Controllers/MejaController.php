@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meja;
+use App\Imports\MejaImport;
+use App\Exports\MejaExport;
 use App\Http\Requests\StoreMejaRequest;
 use App\Http\Requests\UpdateMejaRequest;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class MejaController extends Controller
@@ -72,6 +75,20 @@ class MejaController extends Controller
     {
         $meja->delete();
         return redirect('meja');
+    }
+
+    public function export()
+    {
+        return Excel::download(new MejaExport, 'meja.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        $namafile = $file->getClientOriginalName();
+        $file->move('DataMeja', $namafile);
+        Excel::import(new MejaImport, public_path('/DataMeja/' . $namafile));
+        return redirect()->back()->with('success', 'Import data berhasil');
     }
     }
 
